@@ -8,13 +8,7 @@ This tool allows you to generate barcodes from VCF files or compare them with pr
 
 ## Installation
 
-To install the required dependencies, run:
-
-```bash
-pip install -r requirements.txt
-```
-
-To install the tool, run the following command from the root directory of the project:
+To install the tool with required dependencies, run the following command from the root directory of the project:
 ```bash
 pip install -e .
 ```
