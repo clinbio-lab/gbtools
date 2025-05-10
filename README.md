@@ -1,10 +1,10 @@
 
 # Genetic Barcode Tool
 
-This tool allows you to generate MinHash-based barcodes from VCF files or compare them with previously generated and serialized barcodes. It provides two main functionalities:
+This tool allows you to generate barcodes from VCF files or compare them with previously generated barcodes. It provides two main functionalities:
 
 1. **Barcode Generation:** To compute a barcode from a single VCF file.
-2. **Barcode Comparison:** To compare MinHash signatures between a VCF file and a previously serialized string (e.g., from a database).
+2. **Barcode Comparison:** To compare signatures between a VCF file and a previously generated string (e.g., from a database).
 
 ## Installation
 
@@ -20,7 +20,7 @@ The tool has two main functionalities, which can be invoked from the command lin
 
 ### Barcode Generation
 
-To generate a MinHash barcode from a VCF file, use the following command:
+To generate a barcode from a VCF file, use the following command:
 
 ```bash
 gbtools barcode <path_to_vcf_file> --output_filename <output_filename> --output_path <output_directory>
@@ -32,16 +32,16 @@ gbtools barcode <path_to_vcf_file> --output_filename <output_filename> --output_
 
 ### Barcode Comparison
 
-To compare the MinHash signature of a VCF file with a previously serialized string, run:
+To compare the signature of a VCF file with a previously generated barcode, run:
 
 ```bash
-gbtools compare <path_to_vcf_file> <base64_encoded_brotli_hash_string>
+gbtools compare <path_to_vcf_file> <hash_string>
 ```
 
 * `<path_to_vcf_file>` — the VCF file to compare.
-* `<base64_encoded_brotli_hash>` — the Base64-encoded Brotli-compressed LeanMinHash string representing the second hash.
+* `<hash_string>` — the string representing the second hash.
 
-The command will output the Jaccard similarity between the two hashes.
+The command will output the Hamming distance between the two hashes.
 
 ## Example Data
 
@@ -50,26 +50,22 @@ For testing the tool, you can use genomic and exomic data available [data](https
 ## Project Structure
 
 ```
-├── README.md                   
-├── Untitled-2.ipynb        
-├── genetic_barcode/         
-│   ├── __init__.py
-│   ├── cli/              
-│   │   ├── __init__.py
-│   │   └── main.py
-│   ├── core/            
-│   │   ├── __init__.py
-│   │   ├── barcoding.py
-│   │   └── comparing_hashes.py
-│   ├── data/                   
-│   │   └── iupac.py
-│   └── utils/                 
-│       ├── __init__.py
-│       └── hashing.py
-├── genetic_barcode.egg-info/    
-├── requirements.txt            
-├── setup.py                     
-└── tests/                   
+├── README.md
+├── genetic_barcode
+│   ├── __init__.py
+│   ├── cli
+│   │   ├── __init__.py
+│   │   └── main.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── barcoding.py
+│   │   └── comparing_hashes.py
+│   └── utils
+│       ├── __init__.py
+│       └── hashing.py
+├── requirements.txt
+├── setup.py
+└── tests
     └── __init__.py
 ```
 
