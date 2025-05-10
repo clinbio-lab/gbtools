@@ -6,7 +6,8 @@ setup(
     packages=find_packages(),
     package_dir={'': '.'},
     install_requires=[
-        "cyvcf2" ],
+        "cyvcf2",
+        "pdf417"],
     entry_points={
         "console_scripts": [
             "gbtools=genetic_barcode.cli.main:main",
