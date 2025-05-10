@@ -57,7 +57,7 @@ def generate_barcode_image(vcf_path: str, output_filename: Optional[str] = None,
 
 
     save_png(image = image, vcf_path = vcf_path, output_filename = output_filename, output_path = output_path)
-    return hash
+    print(f'Hashvalue: {hash}')
 
 
 
