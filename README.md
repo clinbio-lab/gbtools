@@ -14,6 +14,11 @@ To install the required dependencies, run:
 pip install -r requirements.txt
 ```
 
+To install the tool, run the following command from the root directory of the project:
+```bash
+pip install -e .
+```
+
 ## Usage
 
 The tool has two main functionalities, which can be invoked from the command line:
