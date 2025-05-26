@@ -45,5 +45,4 @@ def compare_hashes(input1: str, input2: str) -> Dict[str, float]:
         "similarity": similarity,
         "fraction": fraction
     }
-    print(result)
     return result
