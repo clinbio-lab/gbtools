@@ -23,9 +23,9 @@ def main() -> None:
 
 
 
-    parser_cmp = subparsers.add_parser("compare", help="Compare a VCF file to a barcode-encoded hash")
-    parser_cmp.add_argument("vcf_file", help="First VCF-file")
-    parser_cmp.add_argument("hash_str", help="Previously generated hash string")
+    parser_cmp = subparsers.add_parser("compare", help="Compare two barcodes or VCF files")
+    parser_cmp.add_argument("input1", help="First VCF file path or precomputed hash string")
+    parser_cmp.add_argument("input2", help="Second VCF file path or precomputed hash string")
 
 
     args = parser.parse_args()
@@ -36,9 +36,9 @@ def main() -> None:
             output_filename=args.output_filename,
             output_path=args.output_path,
         )
-
+        
     elif args.command == "compare":
-        similarity = compare_hashes(args.vcf_file, args.hash_str)
+        similarity = compare_hashes(args.input1, args.input2)
         print(similarity)
 if __name__ == '__main__':
     main()
