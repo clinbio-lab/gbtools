@@ -58,7 +58,7 @@ gnomad.exomes.v4.1.sites.distancefilt500k.ALL.regions.bed
 ## Example hashing output
 
 The hash string for publicly available sample HG001 (NA12878) from 1000GP looks like this:
-.......
+*c0b9b6a71999420ebbebe9669e6b7e266ab661a172795e9716e14b97bb119a1491976962990e6*
 
 
 ## Installation
