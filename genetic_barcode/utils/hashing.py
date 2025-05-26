@@ -1,13 +1,21 @@
 
 import random
 import hashlib
-from itertools import chain
+from cyvcf2 import VCF 
 
-from cyvcf2 import VCF
+CHUNK_SIZE = 3
 
+def is_vcf_file(vcf_path: str) -> bool:
+    """
+    Check if a given file path corresponds to a VCF or compressed VCF file.
 
-CHUNCK_SIZE = 3
+    Args:
+        vcf_path (str): Path to a file.
 
+    Returns:
+        bool: True if file ends with '.vcf' or '.vcf.gz', else False.
+    """
+    return vcf_path.endswith('.vcf') or vcf_path.endswith('.vcf.gz') 
 def parse_vcf(vcf_path: str) -> VCF:
     """
     Read a VCF file and return a VCF object.
@@ -15,7 +23,11 @@ def parse_vcf(vcf_path: str) -> VCF:
     :param vcf_path: Path to the VCF file.
     :return: cyvcf2.VCF object for iterating variants.
     """
+    if not is_vcf_file(vcf_path):
+        raise ValueError(f"Provided file is not a valid VCF file: {vcf_path}")
+    
     return VCF(vcf_path)
+
 
 def resample_genotypes(gt_string: str, seed = 42) -> str:
 
@@ -43,14 +55,11 @@ def gt_encode(vcf_path: str) -> str:
     """
 
     vcf = parse_vcf(vcf_path)
-    gt_list, ref_list, alt_list, genotype_list = [], [], [], []
+    gt_list, genotype_list = [], []
     for var in vcf:
-        ref_list.append(var.REF)
-        alt_list.append(var.ALT)
-        genotype_list.append(var.genotypes[0][:2])
-    alt_list = list(chain.from_iterable(alt_list))
+        genotype_list.append(var.genotypes[0][:2]) 
 
-    for ref, alt, gt in zip(ref_list, alt_list, genotype_list):
+    for gt in  genotype_list:
         if gt == [0,0]:
             gt_list.append("0")
         elif sorted(gt)==[0,1]:
@@ -97,7 +106,7 @@ def run_hash(path: str) -> str:
     hash_result = ""
     gt_str_rec = gt_recode(resample_genotypes(gt_encode(path)))
     
-    for chunk in get_chunks(gt_str_rec, CHUNCK_SIZE):
+    for chunk in get_chunks(gt_str_rec, CHUNK_SIZE):
         if "0" not in chunk:
             h = hashlib.md5(chunk.encode()).hexdigest()[0]
         else:
