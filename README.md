@@ -13,11 +13,6 @@ The resulting hash string of a sample can be output as a 2D barcode to be includ
 For working with human data, we also generated an optimal set of 462 biallelic SNPs that are highly informative in all major populations and located in exonic regions.
 This universal SNP set can be used as an efficient genotyping panel for both WES and WGS.
 
-### Created by:
-
-* Giulgaz Muradova
-* Fedor Konovalov
-
 ### Genotype Encoding Strategy
 
 <p align="center">
@@ -127,3 +122,11 @@ For testing the tool, you can use genomic and exomic data available [data](https
 ├── requirements.txt
 └── setup.py
 ```
+
+## Created by:
+
+* **Giulgaz Muradova**  
+[GitHub](https://github.com/Gulya-mur) | email: gm@clinbio.ru
+
+* **Fedor Konovalov**  
+[GitHub](https://github.com/fedkon) | email: fk@clinbio.ru
