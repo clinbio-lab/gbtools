@@ -90,8 +90,8 @@ To compare the signature of a VCF file with a previously generated barcode, run:
 gbtools compare <input1> <input2>
 ```
 
-* <input1> - VCF path or precomputed hash string
-* <input2> - VCF path or precomputed hash string
+* `<input1>` - VCF path or precomputed hash string
+* `<input2>` - VCF path or precomputed hash string
 
 The command will output the Hamming distance between the two hashes, as well as the fraction of non-missing hash positions being compared.
 
@@ -105,8 +105,7 @@ For testing the tool, you can use genomic and exomic data available [data](https
 ├── LICENSE
 ├── README.md
 ├── figs
-│   ├── Combination.png
-│   └── Full_pipeline.png
+│   └── SNP_encoding.png   
 ├── genetic_barcode
 │   ├── __init__.py
 │   ├── cli
